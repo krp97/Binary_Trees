@@ -1,7 +1,8 @@
 #pragma once
-
+#include <string>
 class Bst_Node
 {
+	friend class Bst;
 public:
 	Bst_Node(int value, Bst_Node* up, Bst_Node* left, Bst_Node* right)		
 		: value_{ value }, up_{ up }, left_{ left }, right_{ right } {};
@@ -9,6 +10,8 @@ public:
 	virtual ~Bst_Node();
 
 	virtual std::string to_string();
+
+	void operator=(Bst_Node& rhs);
 
 protected:
 	int value_;

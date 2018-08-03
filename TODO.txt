@@ -1,0 +1,6 @@
+Binary Search Tree:
+	- Test all insert cases 
+	- Test removing 
+	- Implement console printing method
+Implement AVL tree
+Implement RBT
