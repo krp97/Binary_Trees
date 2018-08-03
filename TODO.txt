@@ -1,4 +1,5 @@
 Binary Search Tree:
+	- Implement BST class destructor
 	- Test all insert cases 
 	- Test removing 
 	- Implement console printing method

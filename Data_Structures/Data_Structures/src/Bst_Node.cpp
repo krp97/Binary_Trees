@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Bst_Node.h"
+#include "../include/Bst_Node.h"
 
 Bst_Node::~Bst_Node()
 {

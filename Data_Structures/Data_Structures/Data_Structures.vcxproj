@@ -154,7 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Data_Structures.cpp" />
-    <ClCompile Include="include\Bst_Node.cpp" />
+    <ClCompile Include="src\Bst_Node.cpp" />
     <ClCompile Include="src\Bst.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
