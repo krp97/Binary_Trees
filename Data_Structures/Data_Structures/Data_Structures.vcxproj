@@ -147,6 +147,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\Avl.h" />
+    <ClInclude Include="include\Avl_Node.h" />
     <ClInclude Include="include\Bst.h" />
     <ClInclude Include="include\Bst_Node.h" />
     <ClInclude Include="stdafx.h" />
@@ -154,6 +156,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Data_Structures.cpp" />
+    <ClCompile Include="src\Avl.cpp" />
+    <ClCompile Include="src\Avl_Node.cpp" />
     <ClCompile Include="src\Bst_Node.cpp" />
     <ClCompile Include="src\Bst.cpp" />
     <ClCompile Include="stdafx.cpp">

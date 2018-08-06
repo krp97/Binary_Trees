@@ -27,6 +27,12 @@
     <ClInclude Include="include\Bst.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\Avl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Avl_Node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -38,7 +44,13 @@
     <ClCompile Include="src\Bst.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="include\Bst_Node.cpp">
+    <ClCompile Include="src\Bst_Node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Avl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Avl_Node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
