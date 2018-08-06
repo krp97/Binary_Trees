@@ -23,27 +23,26 @@ public:
 	void remove(int value);
 
 	void inorder(Bst_Node* node, std::string& output);
-
+	
 	void preorder(Bst_Node* node, std::string& output);
 	
 	void postorder(Bst_Node* node, std::string& output);
 
-	Bst_Node* get_root() const { return root_; };
+	virtual Bst_Node* get_root() const { return root_; };
 
 	bool load_from_file(const std::string& filepath);
 	
 	bool save_to_file(const std::string& filepath);
 
-protected:
-	Bst_Node* root_;
-
 private:
+
+	Bst_Node * root_;
 
 	Bst_Node* find_insert_spot(int value, Bst_Node* node) const;
 
 	void remove(Bst_Node* node);
 
-	// Removal methods handling three seperate cases:	--------------------------
+	// ------------- Removal methods handling three seperate cases: -------------
 
 	void remove_leaf(Bst_Node* node);			// -> Node doesn't have children.
 
