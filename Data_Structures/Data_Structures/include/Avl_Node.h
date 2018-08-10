@@ -3,6 +3,7 @@
 class Avl_Node
 	: public Bst_Node
 {
+	friend class Avl;
 public:
 	
 	Avl_Node();

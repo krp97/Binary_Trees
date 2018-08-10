@@ -5,30 +5,34 @@
 
 Bst::~Bst()
 {
-	while (popRoot());
+	while (pop_root());
 }
 
 std::string Bst::to_string()
 {
-	auto output = std::string();
+	auto output{ std::string() };
 	inorder(root_, output);
 	return output;
 }
 
 void Bst::insert(int value)
 {
-	// Find an appropriate place to insert the input value.
-	
-	if (!root_)	// Leaf is an uninitialized root.
+	auto leaf{ find_insert_spot(value, root_) };
+	add_node(leaf);
+}
+
+void Bst::add_node(Bst_Node* leaf)
+{
+	auto value{ leaf->value_ };
+
+	if (!root_)
 	{
 		root_ = new Bst_Node(value, nullptr, nullptr, nullptr);
 		return;
 	}
-	auto leaf{ find_insert_spot(value, root_) };
-
 	if (value > leaf->value_)
 		leaf->right_ = new Bst_Node(value, leaf, nullptr, nullptr);
-	else
+	else if (value < leaf->value_)
 		leaf->left_ = new Bst_Node(value, leaf, nullptr, nullptr);
 }
 
@@ -40,15 +44,15 @@ Bst_Node* Bst::find_insert_spot(int value, Bst_Node* node) const
 	{
 		if (value < tmp->value_ && tmp->left_)
 			tmp = tmp->left_;
-		else if (value >= tmp->value_ && tmp->right_)
+		else if (value > tmp->value_ && tmp->right_)
 			tmp = tmp->right_;
 		else
 			return tmp;
 	}
-	return nullptr;
+	return tmp;
 }
 
-bool Bst::popRoot()
+bool Bst::pop_root()
 {
 	if (root_)
 	{
@@ -102,7 +106,7 @@ void Bst::remove_single_child(Bst_Node* node)
 {
 	auto child{ node->right_ ? node->right_ : node->left_ };
 
-	*node = *child;	// Using the overloaded assignment operator.
+	*node = *child;	
 	delete child;
 }
 

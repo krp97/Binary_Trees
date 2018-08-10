@@ -1,12 +1,10 @@
 
 #include "Bst.h"
 #include "Avl_Node.h"
-#include "string"
+#include <string>
 
-class Avl :
-	public Bst
+class Avl : public Bst
 {
-	friend class Avl_Node;
 
 public:
 	Avl();
@@ -21,26 +19,35 @@ public:
 
 	void insert(int value) override;
 
-	bool popRoot() override;
+	bool pop_root() override;
 
 	Avl_Node* get_root() const override { return root_; };
-	
-	/*----- Methods inherited (not overriden) from base class-------------
-
-	 * void inorder(Bst_Node* node, std::string& output);
-
-	 * void preorder(Bst_Node* node, std::string& output);
-
-	 * void postorder(Bst_Node* node, std::string& output);
-
-	 * bool load_from_file(const std::string& filepath);
-	
-	 * bool save_to_file(const std::string& filepath);
-	
-	-----------------------------------------------------*/
 
 private:
 
-	Avl_Node* root_;
+	Avl_Node * root_;
 
+	void add_node(Avl_Node* leaf);
+
+	Avl_Node* find_insert_spot(int value, Avl_Node* root);
+
+	Avl_Node* find_unbalanced_node(Avl_Node* leaf);
+
+	void update_heights(Avl_Node* leaf);
+
+	void balance_tree(Avl_Node* node);
+
+	void right_rot(Avl_Node* node);
+
+	void left_rot(Avl_Node* node);
+
+	void swap_child(Avl_Node* parent, Avl_Node* new_child);
+
+	void assign_as_right_child(Avl_Node* parent, Avl_Node* child);
+
+	void assign_as_left_child(Avl_Node* parent, Avl_Node* child);
+
+	void right_left_rot(Avl_Node* node);
+
+	void left_right_rot(Avl_Node* node);
 };
