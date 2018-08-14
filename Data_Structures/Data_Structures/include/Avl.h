@@ -3,7 +3,7 @@
 #include "Avl_Node.h"
 #include <string>
 
-class Avl : public Bst
+class Avl
 {
 
 public:
@@ -11,43 +11,48 @@ public:
 
 	Avl(Avl_Node& root);
 
-	Avl(Avl& avl_tree);
+	Avl& operator=(Avl& rhs) { this->root_ = rhs.root_; };
 
 	virtual ~Avl();
 
-	std::string to_string() override;
+	void insert(const int value);
 
-	void insert(int value) override;
+	void inorder(Avl_Node* node, std::string& output);
 
-	bool pop_root() override;
+	void preorder(Avl_Node* node, std::string& output);
 
-	Avl_Node* get_root() const override { return root_; };
+	void postorder(Avl_Node* node, std::string& output);
+
+	Avl_Node* get_root() { return root_; };
+
+	std::string to_string();
 
 private:
 
 	Avl_Node * root_;
 
-	void add_node(Avl_Node* leaf);
+	int max(const int value1, const int value2) const;
 
-	Avl_Node* find_insert_spot(int value, Avl_Node* root);
+	int get_height(Avl_Node const* node) const;
+	
+	void update_height(Avl_Node* node);
 
-	Avl_Node* find_unbalanced_node(Avl_Node* leaf);
+	Avl_Node* add_node(Avl_Node * leaf, Avl_Node* leaf_parent, const int value);
 
-	void update_heights(Avl_Node* leaf);
+	Avl_Node* retrace(Avl_Node* leaf, const int value);
 
-	void balance_tree(Avl_Node* node);
+	Avl_Node* fix_right(Avl_Node* node, const int value);
 
-	void right_rot(Avl_Node* node);
+	Avl_Node* fix_left(Avl_Node* node, const int value);
 
-	void left_rot(Avl_Node* node);
+	void reattach_parent(Avl_Node* parent, Avl_Node* child);
 
-	void swap_child(Avl_Node* parent, Avl_Node* new_child);
+	Avl_Node* rot_left(Avl_Node* node);
 
-	void assign_as_right_child(Avl_Node* parent, Avl_Node* child);
+	Avl_Node* rot_right_left(Avl_Node* node);
 
-	void assign_as_left_child(Avl_Node* parent, Avl_Node* child);
+	Avl_Node* rot_right(Avl_Node* node);
 
-	void right_left_rot(Avl_Node* node);
+	Avl_Node* rot_left_right(Avl_Node* node);
 
-	void left_right_rot(Avl_Node* node);
 };

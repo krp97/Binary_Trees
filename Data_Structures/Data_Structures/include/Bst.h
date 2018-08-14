@@ -38,7 +38,7 @@ private:
 
 	Bst_Node * root_;
 
-	void add_node(Bst_Node* leaf);
+	void add_node(Bst_Node* leaf, int value);
 
 	Bst_Node* find_insert_spot(int value, Bst_Node* node) const;
 

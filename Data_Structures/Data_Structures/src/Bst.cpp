@@ -3,6 +3,7 @@
 #include <fstream>
 #include <algorithm>
 
+
 Bst::~Bst()
 {
 	while (pop_root());
@@ -18,14 +19,12 @@ std::string Bst::to_string()
 void Bst::insert(int value)
 {
 	auto leaf{ find_insert_spot(value, root_) };
-	add_node(leaf);
+	add_node(leaf, value);
 }
 
-void Bst::add_node(Bst_Node* leaf)
+void Bst::add_node(Bst_Node* leaf, int value)
 {
-	auto value{ leaf->value_ };
-
-	if (!root_)
+	if (!leaf)
 	{
 		root_ = new Bst_Node(value, nullptr, nullptr, nullptr);
 		return;
@@ -164,7 +163,6 @@ Bst_Node* Bst::find_min(Bst_Node* node) const
 		tmp = tmp->left_;
 
 	return tmp;
-
 }
 
 Bst_Node* Bst::find_max(Bst_Node* node) const

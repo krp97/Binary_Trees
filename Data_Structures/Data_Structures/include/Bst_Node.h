@@ -16,6 +16,8 @@ public:
 
 	void operator=(Bst_Node& rhs);
 
+	int get_value() { return this->value_; };
+
 protected:
 	Bst_Node(int value);
 
