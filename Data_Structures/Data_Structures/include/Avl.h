@@ -17,6 +17,8 @@ public:
 
 	void insert(const int value);
 
+	void remove(const int value);
+
 	void inorder(Avl_Node* node, std::string& output);
 
 	void preorder(Avl_Node* node, std::string& output);
@@ -36,6 +38,20 @@ private:
 	int get_height(Avl_Node const* node) const;
 	
 	void update_height(Avl_Node* node);
+
+	Avl_Node* remove_node(Avl_Node* node, const int value);
+
+	Avl_Node* remove_case(Avl_Node* node);
+
+	Avl_Node* remove_leaf(Avl_Node* node_to_remove);
+
+	Avl_Node* remove_with_single_child(Avl_Node* node_to_remove);
+
+	Avl_Node* remove_with_children(Avl_Node* node_to_remove);
+
+	Avl_Node* find_successor(Avl_Node* node);
+
+	Avl_Node* find_min(Avl_Node* node);
 
 	Avl_Node* add_node(Avl_Node * leaf, Avl_Node* leaf_parent, const int value);
 

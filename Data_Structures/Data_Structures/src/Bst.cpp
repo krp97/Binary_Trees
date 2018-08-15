@@ -135,8 +135,7 @@ void Bst::remove_with_children(Bst_Node* node)
 		else
 			succ_parent->right_ = nullptr;
 		delete successor;
-	}
-		
+	}	
 }
 
 Bst_Node* Bst::find_value(int value) const

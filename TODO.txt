@@ -1,4 +1,7 @@
-Binary Search Tree:
-	- Implement console printing method
-Implement AVL tree
+Binary Search Tree   |	
+AVL tree	     |
+----------------------
+Implement testing methods for both above.
+
+Start with tests on RBT.
 Implement RBT
