@@ -11,7 +11,8 @@ Avl::Avl(Avl_Node& root)
 
 Avl::~Avl()
 {
-
+	while (root_)
+		remove_node(root_, root_->value_);
 }
 
 void Avl::insert(const int value)
