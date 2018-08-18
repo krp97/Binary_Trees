@@ -33,6 +33,12 @@
     <ClInclude Include="include\Avl_Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\Rbt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Rbt_Node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -51,6 +57,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Avl_Node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rbt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rbt_Node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

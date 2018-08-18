@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "..\include\Bst.h"
 #include <fstream>
 #include <algorithm>

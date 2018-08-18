@@ -15,15 +15,15 @@ public:
 
 	virtual ~Avl();
 
-	void insert(const int value);
-
-	void remove(const int value);
-
 	void inorder(Avl_Node* node, std::string& output);
 
 	void preorder(Avl_Node* node, std::string& output);
 
 	void postorder(Avl_Node* node, std::string& output);
+
+	void remove(const int value);
+
+	void insert(const int value);
 
 	Avl_Node* get_root() { return root_; };
 

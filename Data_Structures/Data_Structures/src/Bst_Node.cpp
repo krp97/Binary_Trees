@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "../include/Bst_Node.h"
 
 Bst_Node::Bst_Node()

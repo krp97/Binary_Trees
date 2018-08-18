@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "..\include\Avl.h"
 
 Avl::Avl()
@@ -13,16 +12,6 @@ Avl::~Avl()
 {
 	while (root_)
 		remove_node(root_, root_->value_);
-}
-
-void Avl::insert(const int value)
-{
-	add_node(root_, nullptr, value);
-}
-
-void Avl::remove(const int value)
-{
-	remove_node(root_, value);
 }
 
 void Avl::inorder(Avl_Node * node, std::string & output)
@@ -63,6 +52,11 @@ void Avl::postorder(Avl_Node * node, std::string & output)
 		if (output.at(0) == ',')
 			output = output.substr(1);
 	}
+}
+
+void Avl::remove(const int value)
+{
+	remove_node(root_, value);
 }
 
 Avl_Node* Avl::remove_node(Avl_Node * node, const int value)
@@ -167,6 +161,11 @@ Avl_Node * Avl::find_min(Avl_Node * node)
 	while (tmp->left_)
 		tmp = tmp->left_;
 	return tmp;
+}
+
+void Avl::insert(const int value)
+{
+	add_node(root_, nullptr, value);
 }
 
 Avl_Node* Avl::add_node(Avl_Node * leaf, Avl_Node* leaf_parent, const int value)
