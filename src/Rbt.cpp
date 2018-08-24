@@ -1,4 +1,5 @@
 #include "../include/Rbt.h"
+#include <iostream>
 
 Rbt::Rbt()
 	: sentinel_{new Rbt_Node ()}
@@ -78,7 +79,6 @@ void Rbt::insert(int value)
 Rbt_Node * Rbt::add_node(Rbt_Node * node, const int value)
 {
 	auto parent{ sentinel_ };
-
 	for(auto tree_it{node};;)
 	{
 		if(tree_it == sentinel_)
@@ -97,9 +97,12 @@ Rbt_Node * Rbt::add_node(Rbt_Node * node, const int value)
 
 		if (value > tree_it->value_)
 			tree_it = tree_it->right_;
+
 		else if (value < tree_it->value_)
 			tree_it = tree_it->left_;
-		
+
+		else if(value == tree_it->value_)
+			return node;
 	}
 }
 
@@ -258,4 +261,14 @@ Rbt_Node * Rbt::rot_left_right(Rbt_Node * node)
 	auto left_child{ node->left_ };
 	node->left_ = rot_left(left_child);
 	return rot_right(node);
+}
+
+void Rbt::remove(int value)
+{
+	
+}
+
+Rbt_Node* Rbt::remove_node(int value)
+{
+
 }

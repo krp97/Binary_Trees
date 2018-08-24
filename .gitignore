@@ -1,3 +1,7 @@
+#Dolphin temps
+
+!.directory
+
 # CMake and binary files
 build/**
 

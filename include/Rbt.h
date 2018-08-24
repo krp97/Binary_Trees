@@ -20,6 +20,8 @@ public:
 
 	void insert(int value);
 
+	void remove(int value);
+
 private:
 
 	Rbt_Node* root_;
@@ -60,4 +62,12 @@ private:
 	Rbt_Node* rot_right(Rbt_Node* node);
 
 	Rbt_Node* rot_left_right(Rbt_Node* node);
+
+	Rbt_Node* remove_node(int value);
+
+	Rbt_Node* remove_leaf(Rbt_Node* node_to_remove);
+
+	Rbt_Node* remove_with_single_child(Rbt_Node* node_to_remove);
+
+	Rbt_Node* remove_with_children(Rbt_Node* node_to_remove);
 };
