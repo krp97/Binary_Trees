@@ -1,0 +1,6 @@
+set(CMAKE_BUILD_TYPE Debug)
+cmake_minimum_required(VERSION 3.0)
+project(Data_Structures)
+file(GLOB SOURCES "src/*.cpp")
+add_executable(Data_Structures ${SOURCES})
+target_include_directories(Data_Structures PRIVATE ${include})
