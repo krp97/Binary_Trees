@@ -1,1 +1,0 @@
-/usr/bin/c++  -g  -rdynamic CMakeFiles/Data_Structures.dir/src/Avl.cpp.o CMakeFiles/Data_Structures.dir/src/Avl_Node.cpp.o CMakeFiles/Data_Structures.dir/src/Bst.cpp.o CMakeFiles/Data_Structures.dir/src/Bst_Node.cpp.o CMakeFiles/Data_Structures.dir/src/Rbt.cpp.o CMakeFiles/Data_Structures.dir/src/Rbt_Node.cpp.o CMakeFiles/Data_Structures.dir/src/main.cpp.o  -o Data_Structures 
