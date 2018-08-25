@@ -1,11 +1,7 @@
 
 
-# Data_Structures
-## Tools used 
 
-* Miscrosoft Visual Studio 2017 
-* [Visual Leak Detector ](https://archive.codeplex.com/?p=vld)
-VLD header file has been left included in the main handler class, as it does not affect the release version. 
+# Data_Structures
 
 ## Project description
 
@@ -14,22 +10,19 @@ VLD header file has been left included in the main handler class, as it does not
 * AVL Tree (Adelson-Velskii and Landis)
 * Red and Black Tree
 
-Each binary tree is represented by a similar API consisting of following functionalities:
-* Preorder, Inorder and Postorder traversal.
-* Insertion/ Deletion.
-* Loading a structure from and saving to a file.
-* Finding the max/min keys in the tree.
+Each binary tree is a standalone structure, which only requires it's corresponding node structure to work. They have been gathered under one project, 
 
-Avl tree notation is represented as follows:
-* Top node of each subtree contains a height of the whole subtree.
-* Tree fixing occurs, when the difference between a right and left child is bigger than 2 levels.
+All three trees provide a similar API which consists of:
+* Insertion
+* Removal
+* Preorder / Inorder / Postorder traversal
+* Max / Min key search
 
-Example:
-
-		    5:2
-		   /   \
-		 2:1   8:0
-		 /
-	       1:0
+AVL and R&B also provide methods which determine characteristics specific to their implementations:
+* AVL:
+	* Tree/Subtree height.
+* R&B:
+	* Number of black passes.
 
 ---
+ 
