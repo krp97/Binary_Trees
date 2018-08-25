@@ -5,7 +5,7 @@
 
 ## Project description
 
-**Data Structures** is a follow up project to **[Basic Data Structures](https://github.com/krp97/Basic-Data-Structures)** which complements the implementation with Binary Trees:
+**Binary Trees** is a follow up project to **[Basic Data Structures](https://github.com/krp97/Basic-Data-Structures)** which complements the implementation with Binary Trees:
 * Binary Search Tree
 * AVL Tree (Adelson-Velskii and Landis)
 * Red and Black Tree
