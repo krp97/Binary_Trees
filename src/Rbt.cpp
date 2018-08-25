@@ -265,10 +265,125 @@ Rbt_Node * Rbt::rot_left_right(Rbt_Node * node)
 
 void Rbt::remove(int value)
 {
+	remove_node(root_, value);
+}
+
+Rbt_Node* Rbt::remove_node(Rbt_Node* node, int value)
+{
+	if(node->value_ == value)
+	{
+		if(node->color_ == 'R' || node->up_->color_ == 'R')
+			remove_red_node(node);
+		else 
+			remove_black_node(node);
+	}
+	else if (value > node->value_)
+		remove_node(node->right_, value);
+	else if (value < node->value_)
+		remove_node(node->left_, value);
+}
+
+void Rbt::remove_black_node(Rbt_Node* node)
+{
 	
 }
 
-Rbt_Node* Rbt::remove_node(int value)
+void Rbt::remove_red_node(Rbt_Node* node)
 {
+	auto parent{ node->up_ };
 
+	if(node->left_ != sentinel_ && node->right_ != sentinel_)
+		remove_with_children(node);
+	else if (node->left_ != sentinel_ || node->right_ != sentinel_)
+		remove_with_single_child(node);
+	else
+		remove_leaf(node);
+
+	parent->color_ = 'B';
+}
+
+Rbt_Node* Rbt::remove_leaf(Rbt_Node* node)
+{
+	bool root_test = root_ == node;
+
+	delete node;
+
+	if (root_test)
+		root_ = sentinel_;
+	return sentinel_;
+}
+
+Rbt_Node* Rbt::remove_with_single_child(Rbt_Node* node)
+{
+	auto child{ node->right_ != sentinel_ ? node->right_ : node->left_ };
+	*node = *child;
+
+	if(child->left_ != sentinel_)
+		child->left_->up_ = node;
+	if(child->right_ != sentinel_)
+		child->right_->up_ = node;
+
+	delete child;
+
+	return node;
+}
+
+Rbt_Node* Rbt::remove_with_children(Rbt_Node* node)
+{
+	auto successor = find_successor(node);
+
+	node->value_ = successor->value_;
+
+	auto right_succ_child = successor->right_;
+	if (right_succ_child != sentinel_)
+	{
+		*successor = *right_succ_child;
+
+		if(right_succ_child->left_ != sentinel_)
+			right_succ_child->left_->up_ = successor;
+		if(right_succ_child->right_ != sentinel_)
+			right_succ_child->right_->up_ = successor;
+
+		delete right_succ_child;
+	}
+	else
+	{
+		auto succ_parent{ successor->up_ };
+		if (succ_parent->value_ > successor->value_)
+			succ_parent->left_ = nullptr;
+		else
+			succ_parent->right_ = nullptr;
+		delete successor;
+	}
+	return node;
+}
+
+Rbt_Node * Rbt::find_successor(Rbt_Node * node)
+{
+	if (node->right_ != sentinel_)
+		return find_min(node->right_);
+	else
+	{
+		auto parent{ node->up_ };
+		auto tmp_node{ node };
+
+		while (parent != sentinel_)
+		{
+			if (parent->left_ == tmp_node)
+				return parent;
+
+			tmp_node = parent;
+			parent = parent->up_;
+		}
+		return parent;
+	}
+}
+
+Rbt_Node * Rbt::find_min(Rbt_Node * node)
+{
+	auto tmp{ node };
+
+	while (tmp->left_ != sentinel_)
+		tmp = tmp->left_;
+	return tmp;
 }

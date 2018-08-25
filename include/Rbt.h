@@ -63,11 +63,20 @@ private:
 
 	Rbt_Node* rot_left_right(Rbt_Node* node);
 
-	Rbt_Node* remove_node(int value);
+	Rbt_Node* remove_node(Rbt_Node* root, int value);
+
+	void remove_black_node(Rbt_Node* node);
+
+	void remove_red_node(Rbt_Node* node);
 
 	Rbt_Node* remove_leaf(Rbt_Node* node_to_remove);
 
 	Rbt_Node* remove_with_single_child(Rbt_Node* node_to_remove);
 
 	Rbt_Node* remove_with_children(Rbt_Node* node_to_remove);
+
+	Rbt_Node* find_successor(Rbt_Node * node);
+
+	Rbt_Node* find_min(Rbt_Node * node);
+	
 };
