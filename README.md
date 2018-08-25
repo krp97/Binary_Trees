@@ -1,7 +1,7 @@
 
 
 
-# Data_Structures
+# Binary_Trees
 
 ## Project description
 
