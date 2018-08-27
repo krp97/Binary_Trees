@@ -63,7 +63,10 @@ private:
 
 	Rbt_Node* rot_left_right(Rbt_Node* node);
 
+
 	Rbt_Node* remove_node(Rbt_Node* root, int value);
+
+	Rbt_Node* remove_case(Rbt_Node* node);
 
 	void remove_black_node(Rbt_Node* node);
 

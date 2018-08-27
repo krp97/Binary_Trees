@@ -1,11 +1,5 @@
-#Dolphin temps
-
-!.directory
-
-# CMake and binary files
-build/**
-
-# Visual Code Tasks and Settings
+.directory/*
+.build/*
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json

@@ -3,6 +3,7 @@
 #include "../include/Rbt.h"
 #include "../include/Bst.h"
 #include "../include/Avl.h"
+#include <time.h>
 
 
 void draw(std::string preorder, std::string inorder, std::string postorder, std::string title);
@@ -12,7 +13,6 @@ int main()
 
     Avl test_avl = Avl();
     Bst test_bst = Bst();
-    Rbt test_rbt = Rbt();
 
     srand(time(NULL));
     std::cout << "Input keys: \n";
@@ -23,7 +23,6 @@ int main()
         number = rand() % 20 + 1;
         test_bst.insert(number);
         test_avl.insert(number);
-        test_rbt.insert(number);
         std::cout << number << " ";
     } 
 
@@ -35,13 +34,6 @@ int main()
     std::cout << "key : height\n\n";
 
     draw(test_avl.preorder(), test_avl.inorder(), test_avl.postorder(), "Example AVL: ");
-    
-    std::cout << "\n\n";
-    std::cout << "Notation:\n";
-    std::cout << "key : colour\n\n";
-
-    draw(test_rbt.preorder(), test_rbt.inorder(), test_rbt.postorder(), "Example RBT: ");
-    std::cout << "\n\n";
 
     getchar();
 }
