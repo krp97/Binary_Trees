@@ -24,6 +24,12 @@ public:
 
 	void insert(const int value);
 
+	int get_tree_height(const int value);
+
+	int find_max();
+
+	int find_min();
+
 private:
 
 	Avl_Node * root_;
@@ -73,5 +79,9 @@ private:
 	void preorder(Avl_Node* node, std::string& output);
 
 	void postorder(Avl_Node* node, std::string& output);
+
+	Avl_Node* find_value(const int value);
+
+	Avl_Node* find_max(Avl_Node* node);
 
 };

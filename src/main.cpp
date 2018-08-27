@@ -1,6 +1,5 @@
 #include <iostream>
 
-#include "../include/Rbt.h"
 #include "../include/Bst.h"
 #include "../include/Avl.h"
 #include <time.h>

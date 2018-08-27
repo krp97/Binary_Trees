@@ -8,16 +8,16 @@ Avl::Avl(Avl_Node& root)
 	: root_{ &root }
 {}
 
-Avl::~Avl()
-{
-	while (root_)
-		remove_node(root_, root_->value_);
-}
-
 Avl& Avl::operator=(Avl& rhs)
 {
 	root_ = rhs.root_;
 	return *this;
+}
+
+Avl::~Avl()
+{
+	while (root_)
+		remove_node(root_, root_->value_);
 }
 
 std::string Avl::preorder()
@@ -27,6 +27,16 @@ std::string Avl::preorder()
 	return output.substr(1);
 }
 
+void Avl::preorder(Avl_Node * node, std::string & output)
+{
+	if (node)
+	{
+		output += ", " + node->to_string();
+		preorder(node->left_, output);
+		preorder(node->right_, output);
+	}
+}
+
 std::string Avl::inorder()
 {
 	auto output{std::string()};
@@ -34,11 +44,31 @@ std::string Avl::inorder()
 	return output.substr(1);
 }
 
+void Avl::inorder(Avl_Node * node, std::string & output)
+{
+	if (node)
+	{
+		inorder(node->left_, output);
+		output += ", " + node->to_string();
+		inorder(node->right_, output);
+	}
+}
+
 std::string Avl::postorder()
 {
 	auto output{std::string()};
 	postorder(root_, output);
 	return output.substr(1);
+}
+
+void Avl::postorder(Avl_Node * node, std::string & output)
+{
+	if (node)
+	{
+		postorder(node->left_, output);
+		postorder(node->right_, output);
+		output += ", " + node->to_string();
+	}
 }
 
 void Avl::remove(const int value)
@@ -104,31 +134,19 @@ Avl_Node* Avl::remove_with_single_child(Avl_Node * node)
 
 Avl_Node* Avl::remove_with_children(Avl_Node * node)
 {
-	auto successor = find_successor(node);
+	auto successor{ find_successor(node) };
+	auto right_succ_child{ successor->right_ };
 
 	node->value_ = successor->value_;
 
-	auto right_succ_child = successor->right_;
+	Avl_Node* output;
+
 	if (right_succ_child)
-	{
-		*successor = *right_succ_child;
-
-		if(right_succ_child->left_)
-			right_succ_child->left_->up_ = successor;
-		if(right_succ_child->right_)
-			right_succ_child->right_->up_ = successor;
-
-		delete right_succ_child;
-	}
+		output = remove_with_single_child(successor);
 	else
-	{
-		auto succ_parent{ successor->up_ };
-		if (succ_parent->value_ > successor->value_)
-			succ_parent->left_ = nullptr;
-		else
-			succ_parent->right_ = nullptr;
-		delete successor;
-	}
+		output = remove_leaf(successor);
+	reattach_parent(successor, output);
+
 	return node;
 }
 
@@ -330,32 +348,43 @@ Avl_Node * Avl::rot_left_right(Avl_Node* node)
 	return rot_right(node);
 }
 
-void Avl::inorder(Avl_Node * node, std::string & output)
+int Avl::get_tree_height(const int value)
 {
-	if (node)
+	auto node{ find_value(value) };
+	return get_height(node);
+}
+
+Avl_Node* Avl::find_value(const int value)
+{
+	auto tree_it{ root_ };
+	while(tree_it)
 	{
-		inorder(node->left_, output);
-		output += ", " + node->to_string();
-		inorder(node->right_, output);
+		if(tree_it->value_ == value)
+			return tree_it;
+		else if (value > tree_it->value_)
+			tree_it = tree_it->right_;
+		else
+			tree_it = tree_it->left_;
 	}
 }
 
-void Avl::preorder(Avl_Node * node, std::string & output)
+int Avl::find_min()
 {
-	if (node)
-	{
-		output += ", " + node->to_string();
-		preorder(node->left_, output);
-		preorder(node->right_, output);
-	}
+	auto min_node{find_min(root_)};
+	return min_node->value_;
 }
 
-void Avl::postorder(Avl_Node * node, std::string & output)
+int Avl::find_max()
 {
-	if (node)
-	{
-		postorder(node->left_, output);
-		postorder(node->right_, output);
-		output += ", " + node->to_string();
-	}
+	auto max_node{find_max(root_)};
+	return max_node->value_;
+}
+
+Avl_Node* Avl::find_max(Avl_Node* node)
+{
+	auto tmp{ node };
+
+	while (tmp->right_)
+		tmp = tmp->right_;
+	return tmp;
 }
