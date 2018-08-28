@@ -65,7 +65,7 @@ void Bst::remove(int value)
 
 Bst_Node* Bst::find_value(int value) const
 {
-	auto tmp_node {root_};
+	auto tmp_node{ root_ };
 
 	while (tmp_node)
 	{
@@ -128,12 +128,6 @@ void Bst::remove_single_child(Bst_Node* node)
 
 void Bst::remove_with_children(Bst_Node* node)
 {
-	// Find the successor and do the following:
-	// 1 - Copy value of the successor into the node.
-	// 2 - Copy contents of right child of the successor into the successor
-	// 3 - Remove the right child of the successor.
-	// Note that the successor never has a left child.
-
 	auto successor{ find_successor(node) };
 	auto right_succ_child{ successor->right_};
 

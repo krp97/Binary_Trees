@@ -24,6 +24,12 @@ public:
 
 	void insert(const int value);
 
+	int get_tree_height(const int value) const;
+
+	int find_max() const;
+
+	int find_min() const;
+
 private:
 
 	Avl_Node * root_;
@@ -45,9 +51,9 @@ private:
 
 	Avl_Node* remove_with_children(Avl_Node* node_to_remove);
 
-	Avl_Node* find_successor(Avl_Node* node);
+	Avl_Node* find_successor(Avl_Node* node) const;
 
-	Avl_Node* find_min(Avl_Node* node);
+	Avl_Node* find_min(Avl_Node* node) const;
 
 	Avl_Node* add_node(Avl_Node * leaf, Avl_Node* leaf_parent, const int value);
 
@@ -73,5 +79,9 @@ private:
 	void preorder(Avl_Node* node, std::string& output);
 
 	void postorder(Avl_Node* node, std::string& output);
+
+	Avl_Node* find_value(const int value) const;
+
+	Avl_Node* find_max(Avl_Node* node) const;
 
 };

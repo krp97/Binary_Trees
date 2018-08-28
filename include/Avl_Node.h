@@ -7,7 +7,7 @@ public:
 	
 	Avl_Node();
 
-	Avl_Node(int value, int bal_factor, Avl_Node* up, Avl_Node* left, Avl_Node* right);
+	Avl_Node(int value, int height, Avl_Node* up, Avl_Node* left, Avl_Node* right);
 
 	Avl_Node& operator=(Avl_Node& rhs);
 
@@ -17,7 +17,7 @@ public:
 
 private:
 
-	int bal_factor_;
+	int height_;	// Height of the subtree this node is a root of.
 	int value_;
 	
 	Avl_Node* up_;

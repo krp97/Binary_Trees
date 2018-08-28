@@ -25,6 +25,10 @@ public:
 
 	void remove(int value);
 
+	int find_max() const;
+
+	int find_min() const;
+
 private:
 
 	Bst_Node * root_;
